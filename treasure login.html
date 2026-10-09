@@ -1,0 +1,726 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080e19">
+  <title>TREASURE | Official Membership</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Orbitron:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #080e19;
+      --panel: #0c1421;
+      --surface: #101b2a;
+      --text: #f5f8ff;
+      --muted: #9aacc4;
+      --blue: #70bcff;
+      --bright: #a5d9ff;
+      --border: #30435b;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "DM Sans", sans-serif;
+      font-size: 14px;
+    }
+
+    button, input { font: inherit; }
+
+    a {
+      color: var(--blue);
+      text-decoration: none;
+    }
+
+    a:hover { color: white; }
+
+    button:focus-visible,
+    input:focus-visible,
+    a:focus-visible {
+      outline: 3px solid var(--bright);
+      outline-offset: 3px;
+    }
+
+    /* MAIN SPLIT SCREEN */
+
+    .page {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 100vh;
+      padding: 14px;
+      gap: 14px;
+    }
+
+    /* LEFT PANEL — TREASURE ARTWORK */
+
+    .art-panel {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 680px;
+      padding: 35px;
+      border: 1px solid #29415f;
+      border-radius: 22px;
+      background:
+        radial-gradient(ellipse at 50% 65%, #12549a 0%, transparent 40%),
+        radial-gradient(ellipse at 10% 10%, #17345c 0%, transparent 40%),
+        linear-gradient(155deg, #071324, #0b203b 58%, #050a13);
+    }
+
+    .art-panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      opacity: .32;
+      background-image:
+        radial-gradient(2px 2px at 20% 15%, white 60%, transparent),
+        radial-gradient(2px 2px at 75% 25%, white 60%, transparent),
+        radial-gradient(1px 1px at 35% 65%, white 60%, transparent),
+        radial-gradient(2px 2px at 90% 75%, white 60%, transparent),
+        radial-gradient(1px 1px at 15% 85%, white 60%, transparent);
+      background-size: 180px 170px;
+    }
+
+    .art-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+    .eyebrow {
+      font-size: 10px;
+      letter-spacing: 3px;
+      line-height: 2;
+      color: #d3e8ff;
+      text-transform: uppercase;
+    }
+
+    .edition {
+      font-size: 10px;
+      color: #9ecfff;
+      letter-spacing: 1px;
+    }
+
+    .art-main {
+      text-align: center;
+      padding: 30px 0;
+    }
+
+    .star {
+      margin-bottom: 10px;
+      font-size: 38px;
+      color: #dff3ff;
+      text-shadow: 0 0 25px #70bcff;
+    }
+
+    .treasure-logo {
+      font-family: "Orbitron", sans-serif;
+      font-size: clamp(27px, 3.3vw, 48px);
+      font-weight: 800;
+      letter-spacing: -2px;
+      color: #f4f9ff;
+      text-shadow: 0 0 30px #70bcff45;
+    }
+
+    .membership-label {
+      margin-top: 10px;
+      font-size: 10px;
+      letter-spacing: 6px;
+      color: #c7e4ff;
+    }
+
+
+    .sparkle {
+      position: absolute;
+      color: #e4f5ff;
+      text-shadow: 0 0 16px #70bcff;
+    }
+
+    .sparkle-one {
+      top: 22%;
+      left: 15%;
+      font-size: 24px;
+    }
+
+    .sparkle-two {
+      right: 15%;
+      bottom: 23%;
+      font-size: 19px;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(-5deg); }
+      50% { transform: translateY(-12px) rotate(5deg); }
+    }
+
+    .tagline {
+      margin-top: 10px;
+      font-family: "Orbitron", sans-serif;
+      font-size: 12px;
+      line-height: 2.1;
+      letter-spacing: 2px;
+      color: #d9edff;
+    }
+
+    .tagline span { color: var(--blue); }
+
+    .members {
+      margin-top: 17px;
+      color: #aac5e2;
+      font-size: 9px;
+      line-height: 2;
+      letter-spacing: 1.4px;
+    }
+
+    .art-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      padding-top: 20px;
+      border-top: 1px solid #ffffff20;
+    }
+
+    .yg-logo {
+      font-family: "Orbitron", sans-serif;
+      font-size: 21px;
+      font-weight: 800;
+      letter-spacing: -3px;
+      color: #e0efff;
+    }
+
+    .yg-caption {
+      font-size: 9px;
+      line-height: 1.8;
+      letter-spacing: 1px;
+    }
+
+    .art-footer .motto {
+      color: #9cb2cd;
+      font-size: 10px;
+      text-align: right;
+      line-height: 1.8;
+    }
+
+    /* RIGHT PANEL — LOGIN */
+
+    .login-panel {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 680px;
+      padding: 48px clamp(25px, 5vw, 75px);
+      border: 1px solid #222f41;
+      border-radius: 22px;
+      background:
+        radial-gradient(ellipse at 100% 0%, #14253b80, transparent 42%),
+        var(--panel);
+    }
+
+    .login-container {
+      width: 100%;
+      max-width: 410px;
+    }
+
+    .mobile-brand {
+      display: none;
+    }
+
+    .login-brand {
+      margin-bottom: 32px;
+      text-align: center;
+    }
+
+    .login-brand .star {
+      margin-bottom: 0;
+      font-size: 27px;
+    }
+
+    .login-brand .treasure-logo {
+      font-size: 33px;
+      letter-spacing: -1px;
+    }
+
+    .login-brand .membership-label {
+      font-size: 10px;
+      letter-spacing: 6px;
+    }
+
+    .welcome { margin-bottom: 25px; }
+
+    h1 {
+      margin-bottom: 9px;
+      font-size: clamp(25px, 2.5vw, 31px);
+      font-weight: 700;
+      letter-spacing: -.8px;
+    }
+
+    .intro {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    /* Google SSO button */
+
+    .google-btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      width: 100%;
+      min-height: 49px;
+      border: 1px solid #506985;
+      border-radius: 30px;
+      background: transparent;
+      color: var(--text);
+      font-weight: 600;
+      cursor: pointer;
+      transition: .2s;
+    }
+
+    .google-btn:hover {
+      border-color: var(--blue);
+      background: #17283b;
+    }
+
+    .google-icon {
+      width: 19px;
+      height: 19px;
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin: 23px 0;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .divider::before,
+    .divider::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .field { margin-bottom: 19px; }
+
+    .field-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 9px;
+    }
+
+    .field label {
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .field-header a {
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .input-wrap { position: relative; }
+
+    .input-wrap input {
+      width: 100%;
+      height: 49px;
+      padding: 0 15px;
+      border: 1px solid #3b526d;
+      border-radius: 11px;
+      outline: none;
+      background: var(--surface);
+      color: white;
+      transition: .2s;
+    }
+
+    .input-wrap input::placeholder {
+      color: #9aacc4;
+      opacity: 1;
+    }
+
+    .input-wrap input:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px #70bcff20;
+    }
+
+    .password-input { padding-right: 55px !important; }
+
+    .toggle-password {
+      position: absolute;
+      top: 50%;
+      right: 9px;
+      transform: translateY(-50%);
+      width: 36px;
+      height: 34px;
+      border: none;
+      border-radius: 8px;
+      color: #b8d7f5;
+      background: transparent;
+      cursor: pointer;
+    }
+
+    .toggle-password:hover { background: #ffffff10; }
+
+    .options {
+      margin: 4px 0 24px;
+    }
+
+    .remember {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      color: #d1dfef;
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    .remember input {
+      width: 16px;
+      height: 16px;
+      accent-color: var(--blue);
+    }
+
+    .login-btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      width: 100%;
+      min-height: 51px;
+      border: 0;
+      border-radius: 30px;
+      color: #061426;
+      background: linear-gradient(100deg, #8bd0ff, #4ba4f4);
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: .2s;
+    }
+
+    .login-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px #439df045;
+    }
+
+    .message {
+      min-height: 20px;
+      margin-top: 12px;
+      color: #a5d9ff;
+      font-size: 12px;
+      text-align: center;
+    }
+
+    .signup {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+    }
+
+    .signup a {
+      margin-left: 4px;
+      font-weight: 700;
+    }
+
+    .login-footer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      margin-top: 38px;
+      padding-top: 18px;
+      border-top: 1px solid #ffffff17;
+      width: 100%;
+      max-width: 410px;
+      color: #9aacc4;
+    }
+
+    .login-footer .yg-logo { font-size: 16px; }
+
+    .login-footer small {
+      font-size: 9px;
+      line-height: 1.8;
+      letter-spacing: .5px;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 1023px) {
+      .page { grid-template-columns: .95fr 1.05fr; }
+      .art-panel { padding: 25px; }
+      .login-panel { padding: 35px 25px; }
+      .crystal-stage { height: 220px; }
+      .crystal { width: 115px; height: 130px; }
+      .orbit { width: 210px; }
+    }
+
+    @media (max-width: 767px) {
+      .page {
+        display: block;
+        padding: 0;
+      }
+
+      .art-panel { display: none; }
+
+      .login-panel {
+        min-height: 100vh;
+        padding: 35px 24px;
+        border: 0;
+        border-radius: 0;
+      }
+
+      .mobile-brand {
+        display: block;
+        margin-bottom: 40px;
+        text-align: center;
+      }
+
+      .mobile-brand .treasure-logo { font-size: 29px; }
+
+      .mobile-brand .membership-label {
+        margin-top: 5px;
+        font-size: 9px;
+        letter-spacing: 5px;
+      }
+
+      .login-brand { display: none; }
+      .login-container { max-width: 430px; }
+      .login-footer { margin-top: 35px; }
+    }
+
+    @media (max-width: 380px) {
+      .login-panel { padding: 28px 19px; }
+      h1 { font-size: 25px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+<main class="page">
+
+  <!-- LEFT: TREASURE BRANDING -->
+  <section class="art-panel" aria-label="TREASURE membership artwork">
+
+    <header class="art-header">
+      <p class="eyebrow">TREASURE<br>OFFICIAL MEMBERSHIP</p>
+      <p class="edition">EST. 2020 ✦</p>
+    </header>
+
+    <div class="art-main">
+      <div class="star" aria-hidden="true">✦</div>
+      <div class="treasure-logo">TREASURE</div>
+      <div class="membership-label">10 HEARTS · 1 DREAM</div>
+
+      <div class="crystal-stage" aria-hidden="true">
+        <div class="orbit"></div>
+        <div class="orbit orbit-two"></div>
+        <div class="crystal-glow"></div>
+        <div class="crystal"></div>
+        <span class="sparkle sparkle-one">✧</span>
+        <span class="sparkle sparkle-two">✦</span>
+      </div>
+
+      <p class="tagline">
+        WE ARE <span>TREASURE</span><br>
+        YOU ARE OUR <span>MAKER</span> ♥
+      </p>
+
+      <p class="members">
+        CHOI HYUN SUK · PARK JIHOON · YOSHI<br>
+        KIM JUNKYU · YOON JAE HYUK · ASAHI · KIM DOYOUNG<br>
+        HARUTO · PARK JEONG WOO · SO JUNG HWAN
+      </p>
+    </div>
+
+    <footer class="art-footer">
+      <div style="display:flex;align-items:center;gap:12px">
+        <div class="yg-logo" aria-label="YG Entertainment">YG</div>
+        <div class="yg-caption">YG ENTERTAINMENT</div>
+      </div>
+      <p class="motto">I have love-hate<br>Relationship with this agency.</p>
+    </footer>
+  </section>
+
+  <!-- RIGHT: LOGIN -->
+  <section class="login-panel" aria-labelledby="login-title">
+
+    <header class="mobile-brand">
+      <div class="treasure-logo">TREASURE</div>
+      <div class="membership-label">OFFICIAL MEMBERSHIP</div>
+    </header>
+
+    <div class="login-container">
+
+      <header class="login-brand">
+        <div class="star" aria-hidden="true">✦</div>
+        <div class="treasure-logo">TREASURE</div>
+        <div class="membership-label">MEMBERSHIP</div>
+      </header>
+
+      <div class="welcome">
+        <h1 id="login-title">Welcome back<span style="color:#70bcff">.</span></h1>
+        <p class="intro">
+          Hello, TREASURE MAKER!<br>
+          Sign in to stay connected with TREASURE.
+        </p>
+      </div>
+
+      <button class="google-btn" id="google-btn" type="button">
+        <svg class="google-icon" viewBox="0 0 48 48" aria-hidden="true">
+          <path fill="#EA4335" d="M24 9.5c3.5 0 6.7 1.2 9.2 3.6L40 6.3C35.9 2.4 30.5 0 24 0 14.6 0 6.5 5.4 2.6 13.2l8 6.2C12.4 13.7 17.7 9.5 24 9.5z"/>
+          <path fill="#4285F4" d="M47 24.5c0-1.6-.2-3.1-.4-4.5H24v9h12.9c-.6 3-2.3 5.5-4.7 7.2l7.6 5.9c4.5-4.1 7.2-10.1 7.2-17.6z"/>
+          <path fill="#FBBC05" d="M10.5 28.6A14.4 14.4 0 0 1 9.8 24c0-1.6.2-3.1.7-4.6l-8-6.2A23.9 23.9 0 0 0 0 24c0 3.9.9 7.5 2.6 10.8z"/>
+          <path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.9l-7.6-5.9c-2.1 1.4-4.8 2.3-8.3 2.3-6.3 0-11.6-4.2-13.5-9.9l-8 6.2C6.5 42.6 14.6 48 24 48z"/>
+        </svg>
+        Sign in with Google
+      </button>
+
+      <div class="divider"><span>or continue with email</span></div>
+
+      <form id="login-form" novalidate>
+        <div class="field">
+          <div class="field-header">
+            <label for="email">Email / Username</label>
+          </div>
+          <div class="input-wrap">
+            <input id="email" name="email" type="text"
+              placeholder="Enter your email or username"
+              autocomplete="username" required
+              aria-describedby="message">
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="field-header">
+            <label for="password">Password</label>
+            <a href="#" id="forgot">Forgot password?</a>
+          </div>
+          <div class="input-wrap">
+            <input id="password" name="password"
+              class="password-input" type="password"
+              placeholder="Enter your password"
+              autocomplete="current-password" required
+              aria-describedby="message">
+            <button class="toggle-password" id="toggle-password"
+              type="button" aria-label="Show password"
+              aria-controls="password" aria-pressed="false">◉</button>
+          </div>
+        </div>
+
+        <div class="options">
+          <label class="remember" for="remember">
+            <input id="remember" name="remember" type="checkbox">
+            Remember me
+          </label>
+        </div>
+
+        <button class="login-btn" type="submit">
+          <span>Log In</span>
+          <span aria-hidden="true">⟶</span>
+        </button>
+
+        <p class="message" id="message" role="status"
+          aria-live="polite"></p>
+      </form>
+
+      <p class="signup">
+        Don't have an account?
+        <a href="#" id="signup">Sign Up</a>
+      </p>
+    </div>
+
+    <footer class="login-footer">
+      <div class="yg-logo" aria-label="YG Entertainment">YG</div>
+      <small>YG ENTERTAINMENT<br>I have love-hate relationship with this agency</small>
+    </footer>
+
+  </section>
+</main>
+
+<script>
+  const form = document.getElementById("login-form");
+  const email = document.getElementById("email");
+  const password = document.getElementById("password");
+  const message = document.getElementById("message");
+  const toggle = document.getElementById("toggle-password");
+
+  // Show / hide password
+  toggle.addEventListener("click", () => {
+    const show = password.type === "password";
+    password.type = show ? "text" : "password";
+    toggle.textContent = show ? "◎" : "◉";
+    toggle.setAttribute("aria-label",
+      show ? "Hide password" : "Show password");
+    toggle.setAttribute("aria-pressed", String(show));
+  });
+
+  // Basic frontend validation
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    message.textContent = "";
+
+    if (!email.value.trim()) {
+      message.textContent = "Please enter your email or username.";
+      email.focus();
+      return;
+    }
+
+    if (!password.value) {
+      message.textContent = "Please enter your password.";
+      password.focus();
+      return;
+    }
+
+    message.textContent =
+      "demo doang ya ges, ora bisa login beneran. hehe.";
+  });
+
+  document.getElementById("google-btn").addEventListener("click", () => {
+    message.textContent =
+      "I'm just trying ts up so u can't actually login.";
+  });
+
+  document.getElementById("forgot").addEventListener("click", (event) => {
+    event.preventDefault();
+    message.textContent = "kalo lupa yaudah, lupain aja.";
+  });
+
+  document.getElementById("signup").addEventListener("click", (event) => {
+    event.preventDefault();
+    message.textContent = "daftar dulu ya. yang bener bisa ke weverse aja ges.";
+  });
+</script>
+</body>
+</html>
